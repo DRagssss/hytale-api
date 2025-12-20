@@ -7,6 +7,23 @@ with the exception that all versions are currently `0.x.x` and may include break
 
 ---
 
+## [1.0.1] - 2025-12-20
+
+### Added
+
+- get_link() implementation for all images to get the link to the image's CDN
+- Greater depth in README.md explaining how to use basic functions
+
+### Changed
+
+`N/A`
+
+### Fixed
+
+- Store `Category` object in `Media` for a media's category instead of a `str`
+
+---
+
 ## [1.0.0] - 2025-12-19
 
 ### Added
@@ -20,8 +37,8 @@ with the exception that all versions are currently `0.x.x` and may include break
 
 ### Changed
 
-N/A
+`N/A`
 
 ### Fixed
 
-N/A
+`N/A`
