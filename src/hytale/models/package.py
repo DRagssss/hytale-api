@@ -1,4 +1,5 @@
 import re
+from typing import Union
 
 import attrs
 
@@ -21,7 +22,7 @@ class Package(FromDictMixin):
     id: int
     upgrades: dict[str, int] = {}
 
-    def get_color(self) -> str | None:
+    def get_color(self) -> Union[str, None]:
         match = re.search(r"#([0-9A-Fa-f]{6})", self.class_)
         if match:
             return match.group(0)

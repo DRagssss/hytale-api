@@ -1,4 +1,5 @@
 import json
+from typing import Union
 
 import requests
 
@@ -19,7 +20,7 @@ _session.headers.update(
 )
 
 
-def get(path: str, sub_domain: str = "", **params) -> dict | str:
+def get(path: str, sub_domain: str = "", **params) -> Union[dict, str]:
     url = "https://" + sub_domain + BASE_URL + path
     try:
         response = _session.get(
