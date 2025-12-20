@@ -25,7 +25,8 @@ classifiers = [
 ]
 
 dependencies = [
-    "requests>=2.31.0"
+    "requests>=2.31.0",
+    "attrs>=23.0.0"
 ]
 
 [project.optional-dependencies]
