@@ -21,9 +21,6 @@ _session.headers.update(
 
 def get(path: str, sub_domain: str = "", **params) -> dict | str:
     url = "https://" + sub_domain + BASE_URL + path
-
-    print(url)
-
     try:
         response = _session.get(
             url,
