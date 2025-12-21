@@ -1,4 +1,4 @@
-from .blogs import get_blog, get_blogs, get_blogs_for_year_month
+from .blogs import get_blog, get_blogs, get_blogs_for_year, get_blogs_for_year_month
 from .media import (
     get_concept_arts,
     get_desktop_wallpapers,
@@ -21,6 +21,7 @@ __all__ = [
     "get_blogs",
     "get_blog",
     "get_blogs_for_year_month",
+    "get_blogs_for_year",
     "BlogPostExcerpt",
     "BlogPost",
     "CoverImage",
