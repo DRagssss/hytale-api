@@ -2,8 +2,8 @@
 
 All notable changes to this project will be documented in this file.
 
-This project follows [Semantic Versioning](https://semver.org),
-with the exception that all versions are currently `0.x.x` and may include breaking changes.
+This project follows [Semantic Versioning](https://semver.org).
+Since `1.0.0`, breaking changes will only be introduced in major versions.
 
 ---
 
@@ -11,23 +11,24 @@ with the exception that all versions are currently `0.x.x` and may include break
 
 ### Added
 
-- Added get_blogs_for_year() which basically calls get_blogs_for_year_month() 12 times
+- Added `get_blogs_for_year()` which basically calls `get_blogs_for_year_month()` 12 times
 - Added possibility for additional headers and proxies (handled by requests lib)
-- Documentation for all functions
+- `AccountClient` object created to interact with account API
+- `get_available()` created to check if a username is taken
+- Doc-strings for all functions
 
 ### Breaking Changes
 
-- Renamed get_blogs_time() to get_blogs_for_year_month()
+- Renamed `get_blogs_time()` to `get_blogs_for_year_month()`
+- `HytaleAPIError` now includes the HTTP response status code for improved debugging
 
 ### Changed
 
 - Use response headers to determine whether to parse HTTP responses into JSON
-- get() can also return `list` type as JSON can also be a list
-- Include response status code in HytaleAPIError
 
 ### Fixed
 
-`N/A`
+- `get()` can also return `list` type as JSON can also be a list
 
 ---
 

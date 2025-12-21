@@ -3,7 +3,7 @@ from typing import Union
 import requests
 
 from ._version import __version__
-from .exceptions import BlockedError, HytaleAPIError
+from .exceptions import BlockedError, HytaleAPIError, RedirectError
 
 BASE_URL = "hytale.com/api"
 DEFAULT_USER_AGENT = (
@@ -20,7 +20,12 @@ _session.headers.update(
 
 
 def get(
-    path: str, sub_domain: str = "", headers=None, proxies=None, **params
+    path: str,
+    sub_domain: str = "",
+    cookies: dict = {},
+    headers: dict = {},
+    proxies: dict = {},
+    **params,
 ) -> Union[dict, list, str]:
     """Send a get request to the Hytale API
 
@@ -43,8 +48,9 @@ def get(
         response = _session.get(
             url,
             params=params,
-            headers=headers or {},
+            headers=headers,
             proxies=proxies,
+            cookies=cookies,
             timeout=3,
         )
     except requests.RequestException as exc:
@@ -53,7 +59,13 @@ def get(
     if not response.ok:
         if "Attention Required! | Cloudflare" in response.text:
             raise BlockedError("This IP is blocked", response.status_code)
-        raise HytaleAPIError(f"Request failed: {response.text}", response.status_code)
+        raise HytaleAPIError(response.text, response.status_code)
+
+    if "Login | Hytale" in response.text:
+        raise RedirectError(
+            "Incorrect cookie: ensure you inputted a value ory_kratos_session cookie.",
+            response.status_code,
+        )
 
     content_type = response.headers.get("Content-Type", "")
 

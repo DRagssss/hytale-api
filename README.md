@@ -22,7 +22,7 @@ pip install git+https://github.com/DRagssss/hytale-api.git
 
 ### Example Use
 
-This package only consists of endpoint that do not need any authorization (since there is no official API documentation from Hypixel Studios yet) so it's extremely easy to use.
+This package consists of some endpoints that do not need any authorization (since they are basic information which are accessible on the Hytale website) so it's extremely easy to use.
 
 Get excerpts of the latest 3 blogs.
 
@@ -44,4 +44,21 @@ slug = "hytale-s-1st-faq"  # https://hytale.com/news/2025/12/hytale-s-1st-faq
 blog = get_blog(slug)
 
 print(blog.body)  # very long HTML content
+```
+
+All endpoints do with accounts such as username reservations and game profiles require a logged-in user to access them. This is checked by the accounts API using the "ory_kratos_session" cookie value. To get this follow the steps below.
+
+1. Login at https://hytale.com and then open dev tools in your browser (shortcut Ctrl-Shift-C.)
+2. Navigate to the **Application** or **Storage** and then go to **Cookies**.
+3. Go to cookies under the URL https://accounts.hytale.com.
+4. Copy the value of the ory_kratos_session cookie.
+
+This is how the AccountClient object is used.
+
+```py
+from hytale import AccountClient
+
+client = AccountClient("YOUR_SESSION_COOKIE_VALUE")
+
+available = client.get_available("MrBeast")  # check if the MrBeast username is available (example)
 ```
