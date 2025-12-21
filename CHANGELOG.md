@@ -23,6 +23,7 @@ with the exception that all versions are currently `0.x.x` and may include break
 
 - Use response headers to determine whether to parse HTTP responses into JSON
 - get() can also return `list` type as JSON can also be a list
+- Include response status code in HytaleAPIError
 
 ### Fixed
 

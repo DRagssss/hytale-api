@@ -14,7 +14,7 @@ _session = requests.Session()
 _session.headers.update(
     {
         "User-Agent": DEFAULT_USER_AGENT,
-        "Accept": "application/json",
+        "Accept": "application/json",  # expect JSON but can handle other responses
     }
 )
 
@@ -48,14 +48,12 @@ def get(
             timeout=3,
         )
     except requests.RequestException as exc:
-        raise HytaleAPIError(str(exc)) from exc
+        raise HytaleAPIError(str(exc), None) from exc
 
     if not response.ok:
         if "Attention Required! | Cloudflare" in response.text:
-            raise BlockedError("This IP is blocked")
-        raise HytaleAPIError(
-            f"Request failed [{response.status_code}]: {response.text}"
-        )
+            raise BlockedError("This IP is blocked", response.status_code)
+        raise HytaleAPIError(f"Request failed: {response.text}", response.status_code)
 
     content_type = response.headers.get("Content-Type", "")
 
