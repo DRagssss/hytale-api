@@ -29,7 +29,7 @@ def get_blog(slug: str) -> BlogPost:
     return BlogPost.from_dict(data)
 
 
-def get_blogs_time(year: int, month: int) -> list[BlogPostExcerpt]:
+def get_blogs_for_year_month(year: int, month: int) -> list[BlogPostExcerpt]:
     """Get the most recent blogs within a year and month
 
     Args:

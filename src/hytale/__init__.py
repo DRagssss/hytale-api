@@ -1,4 +1,4 @@
-from .blogs import get_blog, get_blogs, get_blogs_time
+from .blogs import get_blog, get_blogs, get_blogs_for_year_month
 from .media import (
     get_concept_arts,
     get_desktop_wallpapers,
@@ -20,7 +20,7 @@ from .status import get_status
 __all__ = [
     "get_blogs",
     "get_blog",
-    "get_blogs_time",
+    "get_blogs_for_year_month",
     "BlogPostExcerpt",
     "BlogPost",
     "CoverImage",
