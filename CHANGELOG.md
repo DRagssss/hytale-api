@@ -11,6 +11,7 @@ with the exception that all versions are currently `0.x.x` and may include break
 
 ### Added
 
+- Added get_blogs_for_year() which basically calls get_blogs_for_year_month() 12 times
 - Added possibility for additional headers and proxies (handled by requests lib)
 - Documentation for all functions
 

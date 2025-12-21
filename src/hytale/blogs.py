@@ -41,3 +41,21 @@ def get_blogs_for_year_month(year: int, month: int) -> list[BlogPostExcerpt]:
     """
     data = get(f"/blog/post/archive/{year}/{month}")
     return [BlogPostExcerpt.from_dict(item) for item in data]
+
+
+def get_blogs_for_year(year: int) -> list[BlogPostExcerpt]:
+    """Get the most recent blogs within a year. Please prefer the use of get_blogs_for_year_month() as this function simply calls it 12 times.
+
+    Args:
+        year (int): The year to filter blogs by.
+
+    Returns:
+        list[BlogPostExcerpt]: A list of blog post excerpts.
+    """
+
+    blogs = []
+    for i in range(1, 13):
+        i = 13 - i  # reverse the order of months
+        monthly_blogs = get_blogs_for_year_month(year, i)
+        blogs.extend(monthly_blogs)
+    return blogs
