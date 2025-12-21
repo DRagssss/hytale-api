@@ -1,3 +1,6 @@
+from typing import Union
+
+
 class BaseHytaleError(Exception):
     pass
 
@@ -5,7 +8,7 @@ class BaseHytaleError(Exception):
 class HytaleAPIError(BaseHytaleError):
     """Base exception for Hytale API errors."""
 
-    def __init__(self, message: str, http_code: int | None):
+    def __init__(self, message: str, http_code: Union[int, None]):
         super().__init__(message)
         self.http_code = http_code
 
