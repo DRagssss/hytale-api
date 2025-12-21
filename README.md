@@ -1,5 +1,7 @@
 # hytale-api
 
+[![PyPI version](https://badge.fury.io/py/hytale-api.svg)](https://badge.fury.io/py/hytale-api)
+
 Unofficial Python library for interacting with the Hytale API.
 
 ⚠️ **This library is unofficial and based on publicly discovered endpoints.**

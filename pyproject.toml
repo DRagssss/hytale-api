@@ -36,6 +36,6 @@ dev = [
 
 
 [project.urls]
-Homepage = "https://github.com/DRagssss/hytale-api"
 Repository = "https://github.com/DRagssss/hytale-api"
 Issues = "https://github.com/DRagssss/hytale-api/issues"
+PyPI = "https://pypi.org/project/hytale-api/"
