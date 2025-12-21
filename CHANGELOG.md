@@ -7,7 +7,7 @@ Since `1.0.0`, breaking changes will only be introduced in major versions.
 
 ---
 
-## [Unreleased]
+## [2.0.0] - 2025-12-21
 
 ### Added
 
