@@ -1,4 +1,3 @@
-import json
 from typing import Union
 
 import requests
@@ -20,12 +19,32 @@ _session.headers.update(
 )
 
 
-def get(path: str, sub_domain: str = "", **params) -> Union[dict, str]:
+def get(
+    path: str, sub_domain: str = "", headers=None, proxies=None, **params
+) -> Union[dict, list, str]:
+    """Send a get request to the Hytale API
+
+    Args:
+        path (str): The path of the endpoint (eg. "/blog/post/archive")
+        sub_domain (str, optional): The subdomain of the API (eg. "store."). Defaults to "".
+        headers (dict, optional): Additional headers to include in the request. Defaults to None.
+        proxies (dict, optional): Proxies to use for the request. Defaults to None.
+
+    Raises:
+        HytaleAPIError: Generic error
+        BlockedError: Error raised if cloudflare blocks the request (due to spam or headers misconfiguration)
+        HytaleAPIError: Generic HTTP error
+
+    Returns:
+        Union[dict, list, str]: Converted JSON response from the API if the response's Content-Type is `application/json`, otherwise a string.
+    """
     url = "https://" + sub_domain + BASE_URL + path
     try:
         response = _session.get(
             url,
             params=params,
+            headers=headers or {},
+            proxies=proxies,
             timeout=3,
         )
     except requests.RequestException as exc:
@@ -38,7 +57,9 @@ def get(path: str, sub_domain: str = "", **params) -> Union[dict, str]:
             f"Request failed [{response.status_code}]: {response.text}"
         )
 
-    try:
-        return json.loads(response.text)
-    except json.decoder.JSONDecodeError:
+    content_type = response.headers.get("Content-Type", "")
+
+    if content_type == "application/json":
+        return response.json()
+    else:
         return response.text

@@ -7,6 +7,25 @@ with the exception that all versions are currently `0.x.x` and may include break
 
 ---
 
+## [Unreleased]
+
+### Added
+
+- Use response headers to determine whether to parse HTTP responses into JSON
+- Added possibility for additional headers and proxies (handled by requests lib)
+- get() can also return `list` type as JSON can also be a list
+- Documentation for all functions
+
+### Changed
+
+`N/A`
+
+### Fixed
+
+`N/A`
+
+---
+
 ## [1.0.1] - 2025-12-20
 
 ### Added
