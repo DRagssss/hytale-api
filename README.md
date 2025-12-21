@@ -40,13 +40,13 @@ You can also get the entire HTML body of a singular blog.
 ```Python
 from hytale import get_blog
 
-slug = "hytale-s-1st-faq"  # https://hytale.com/news/2025/12/hytale-s-1st-faq
+slug = "hytale-s-1st-faq"  # this will get the blog from https://hytale.com/news/2025/12/hytale-s-1st-faq
 blog = get_blog(slug)
 
 print(blog.body)  # very long HTML content
 ```
 
-All endpoints do with accounts such as username reservations and game profiles require a logged-in user to access them. This is checked by the accounts API using the "ory_kratos_session" cookie value. To get this follow the steps below.
+All endpoints to do with accounts such as username reservations and game profiles require a logged-in user to access them. This is checked by the accounts API using the "ory_kratos_session" cookie value. To get this follow the steps below.
 
 1. Login at https://hytale.com and then open dev tools in your browser (shortcut Ctrl-Shift-C.)
 2. Navigate to the **Application** or **Storage** and then go to **Cookies**.

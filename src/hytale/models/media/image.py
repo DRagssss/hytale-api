@@ -2,6 +2,7 @@ from .media import Media
 
 
 class Image(Media):
+
     file: str
 
     def get_link(self):

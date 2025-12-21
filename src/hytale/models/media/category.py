@@ -24,6 +24,11 @@ class Category(Enum):
         return snake_str
 
     def prefixed(self) -> str:
+        """Returns the snake case style identifier for the category for use in links.
+
+        Returns:
+            str: The snake case style identifier for the category for use in links.
+        """
         if self.name == "screenshots":
             return ""
         else:
