@@ -57,7 +57,13 @@ def get(
         raise HytaleAPIError(str(exc), None) from exc
 
     if not response.ok:
-        if "Attention Required! | Cloudflare" in response.text:
+        if response.status_code == 429 or any(
+            phrase in response.text
+            for phrase in [
+                "Attention Required! | Cloudflare",
+                "You are being rate limited",
+            ]
+        ):
             raise BlockedError("This IP is blocked", response.status_code)
         raise HytaleAPIError(response.text, response.status_code)
 

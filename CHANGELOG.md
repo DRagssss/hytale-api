@@ -7,6 +7,22 @@ Since `1.0.0`, breaking changes will only be introduced in major versions.
 
 ---
 
+## [Unreleased]
+
+### Added
+
+- Add `get_available()` which is the method that checks if a username is available if it's a possible username, otherwise returning False
+
+### Breaking Changes
+
+- Rename `get_available()` to `fetch_available()` which is the method that checks if a username is available, regardless of whether it's a possible username.
+
+### Fixed
+
+- Check for getting blocked by cloudflare in a much more consistent manner
+
+---
+
 ## [2.0.0] - 2025-12-21
 
 ### Added
