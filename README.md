@@ -55,7 +55,7 @@ All endpoints to do with accounts such as username reservations and game profile
 3. Go to cookies under the URL https://accounts.hytale.com.
 4. Copy the value of the ory_kratos_session cookie.
 
-This is how the AccountClient object is class.
+This is how the AccountClient class is used.
 
 ```py
 from hytale import AccountClient
